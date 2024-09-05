@@ -23,7 +23,7 @@ export default function ToolsLayout({
     } else {
       return { underlineTitle: "", title: "" };
     }
-  }, []);
+  }, [pathname]);
   return (
     <>
       <Header />
