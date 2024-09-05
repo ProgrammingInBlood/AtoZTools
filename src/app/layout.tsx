@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Anek_Devanagari } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 const Anek = Anek_Devanagari({ subsets: ["latin"] });
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={Anek.className}>{children}</body>
+      <body className={Anek.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
