@@ -5,7 +5,7 @@ import { HeroIcon } from "../icons/animated/HeroIcon";
 
 function HeroSection() {
   return (
-    <div className="flex flex-col items-center justify-between p-5   gap-12 md:flex-row">
+    <div className="flex flex-col items-center md:justify-between gap-12 md:flex-row h-[calc(100vh-76px)] mt-8 md:mt-0">
       <div className=" md:w-1/2 w-full">
         <h1 className="text-6xl font-bold md:text-7xl">
           Your go-to <UnderlineText>toolkit</UnderlineText> for everyday tasks.
@@ -21,7 +21,7 @@ function HeroSection() {
         </div>
       </div>
 
-      <div className="w-1/2 min-w-64">
+      <div className="md:w-1/2  w-full min-w-64 max-w-96 md:max-w-full">
         <HeroIcon />
       </div>
     </div>

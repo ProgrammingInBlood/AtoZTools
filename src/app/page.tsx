@@ -9,7 +9,6 @@ export default function Home() {
   return (
     <>
       <Header />
-
       <main>
         <Container>
           <HeroSection />
