@@ -14,7 +14,6 @@ const icon = {
 
 export const HeroIcon = () => (
   <motion.div
-    className="container"
     variants={icon}
     initial="hidden"
     animate="visible"
