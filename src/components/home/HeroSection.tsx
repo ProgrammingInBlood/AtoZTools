@@ -21,7 +21,7 @@ function HeroSection() {
         </div>
       </div>
 
-      <div className="md:w-1/2 w-full max-w-64  min-w-64 sm:max-w-96">
+      <div className="md:w-1/2 w-full max-w-64  min-w-64 sm:max-w-96 md:max-w-full">
         <HeroIcon />
       </div>
     </div>
