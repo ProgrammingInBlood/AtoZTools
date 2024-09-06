@@ -18,6 +18,8 @@ export default function ToolsLayout({
       return { underlineTitle: "Password", title: "Genrator" };
     } else if (pathname === "/tools/color-code-generator") {
       return { underlineTitle: "Color Code", title: "Genrator" };
+    } else if (pathname === "/tools/color-palattes-generator") {
+      return { underlineTitle: "Color Palattes", title: "Genrator" };
     } else if (pathname === "/tools/qr-code-generator") {
       return { underlineTitle: "QR Code", title: "Genrator" };
     } else {

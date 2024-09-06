@@ -7,6 +7,7 @@ import ToolsCards from "../cards/ToolsCards";
 import PasswordIcon from "../icons/PasswordIcon";
 import { useRouter } from "next/navigation";
 import ColorIcon from "../icons/ColorIcon";
+import ColorPalatteIcon from "../icons/ColorPalatteIcon";
 
 function ExploreToolsSection() {
   const router = useRouter();
@@ -43,13 +44,10 @@ function ExploreToolsSection() {
         />
 
         <ToolsCards
-          title="QR Code Genrator"
-          description=" A QR code generator creates customizable QR codes that store data like
-          URLs or contact info. These codes are easily scanned by smartphones,
-          making them ideal for quick information sharing in marketing,
-          packaging, and events."
-          icon={<QrCodeIcon fill="#fff" width={60} height={60} />}
-          onClick={() => router.push("/tools/qr-code-generator")}
+          title="Color Palatte Genrator"
+          description="Generate unique and vibrant color palettes instantly for your design needs. Quickly explore and copy distinct color schemes with ease."
+          icon={<ColorPalatteIcon fill="#fff" width={60} height={60} />}
+          onClick={() => router.push("/tools/color-palattes-generator")}
           color="orange"
         />
       </div>
