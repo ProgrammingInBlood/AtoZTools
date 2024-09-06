@@ -1,5 +1,8 @@
 import React, { ReactNode } from "react";
 import QrCodeIcon from "../icons/QrCodeIcon";
+import Headline from "../shared/Heading";
+import Paragraph from "../shared/Paragraph";
+import SubHeading from "../shared/SubHeading";
 
 interface ToolsCardsProps {
   title: string;
@@ -64,13 +67,14 @@ function ToolsCards({
   const classes = colorClasses[color] || colorClasses.green;
 
   return (
-    <div className="flex items-start gap-10 lg:w-[48%]">
+    <div className="flex items-start gap-5 lg:gap-10 lg:w-[48%]">
       <div className={`${classes.background} p-2 rounded w-fit`}>{icon}</div>
 
       <div>
-        <h1 className="text-4xl font-semibold">{title}</h1>
-
-        <p className="text-xl mt-2 text-gray-400">{description}</p>
+        <SubHeading>{title}</SubHeading>
+        <Paragraph className="text-xl mt-2 text-gray-400">
+          {description}
+        </Paragraph>
 
         <div>
           <button

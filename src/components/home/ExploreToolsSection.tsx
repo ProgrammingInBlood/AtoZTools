@@ -8,15 +8,16 @@ import PasswordIcon from "../icons/PasswordIcon";
 import { useRouter } from "next/navigation";
 import ColorIcon from "../icons/ColorIcon";
 import ColorPalatteIcon from "../icons/ColorPalatteIcon";
+import Headline from "../shared/Heading";
 
 function ExploreToolsSection() {
   const router = useRouter();
   return (
     <div className="pt-16 ">
       <div className="mb-10">
-        <h1 className="text-6xl">
+        <Headline>
           Our <UnderlineText>Tools</UnderlineText>
-        </h1>
+        </Headline>
       </div>
       <div className="flex flex-wrap justify-between gap-6">
         <ToolsCards

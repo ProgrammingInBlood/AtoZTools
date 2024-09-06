@@ -2,19 +2,21 @@ import React from "react";
 import UnderlineText from "../shared/UnderlineText";
 import PrimaryButton from "../shared/PrimaryButton";
 import { HeroIcon } from "../icons/animated/HeroIcon";
+import Headline from "../shared/Heading";
+import Paragraph from "../shared/Paragraph";
 
 function HeroSection() {
   return (
-    <div className="flex flex-col-reverse items-center justify-end md:justify-between gap-12 md:flex-row min-h-[calc(100vh-76px)]">
+    <div className="flex flex-col-reverse items-center justify-end md:justify-between gap-12 md:flex-row md:min-h-[calc(100vh-76px)]">
       <div className=" md:w-1/2 w-full">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold lg:text-7xl">
+        <Headline>
           Your go-to <UnderlineText>toolkit</UnderlineText> for everyday tasks.
-        </h1>
+        </Headline>
 
-        <p className="text-lg sm:text-xl text-gray-500 font-medium">
+        <Paragraph>
           From secure passwords to quick conversions, AtoZTools has everything
           you need to get things done faster.
-        </p>
+        </Paragraph>
 
         <div className="pt-10">
           <PrimaryButton text="Expore Tools" />
