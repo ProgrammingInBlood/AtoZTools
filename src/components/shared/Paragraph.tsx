@@ -6,7 +6,10 @@ function Paragraph({
   ...props
 }: HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <p className="text-lg sm:text-xl text-gray-500 font-medium" {...props}>
+    <p
+      className={"text-lg sm:text-xl text-gray-500 font-medium " + className}
+      {...props}
+    >
       {children}
     </p>
   );

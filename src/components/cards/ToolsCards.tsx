@@ -67,25 +67,25 @@ function ToolsCards({
   const classes = colorClasses[color] || colorClasses.green;
 
   return (
-    <div className="flex items-start gap-5 lg:gap-10 lg:w-[48%]">
-      <div className={`${classes.background} p-2 rounded w-fit`}>{icon}</div>
-
-      <div>
-        <SubHeading>{title}</SubHeading>
-        <Paragraph className="text-xl mt-2 text-gray-400">
-          {description}
-        </Paragraph>
-
+    <div className="lg:w-[48%]">
+      <div className="flex items-start gap-5 lg:gap-10">
+        <div className={`${classes.background} p-2 rounded w-fit`}>{icon}</div>
         <div>
-          <button
-            type="button"
-            onClick={onClick}
-            className={`${classes.background} ${classes.hover} text-white font-bold py-2 px-4 rounded-lg mt-1`}
-          >
-            Try Now
-          </button>
+          <SubHeading>{title}</SubHeading>
+          <div>
+            <button
+              type="button"
+              onClick={onClick}
+              className={`${classes.background} ${classes.hover} text-white font-bold py-2 px-4 rounded-lg mt-1`}
+            >
+              Try Now
+            </button>
+          </div>
         </div>
       </div>
+      <Paragraph className="text-xl mt-2 text-gray-400">
+        {description}
+      </Paragraph>
     </div>
   );
 }
