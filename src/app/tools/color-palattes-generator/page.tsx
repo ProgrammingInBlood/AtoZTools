@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import chroma from "chroma-js";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,23 +12,37 @@ const ColorPaletteGenerator = () => {
   const [isClient, setIsClient] = useState<boolean>(false);
 
   // Generate initial palettes
-  const generateDistinctColor = (): string => {
-    let color: string;
-    do {
-      color = chroma.random().hex();
-    } while (palettes.some((palette) => palette.includes(color))); // Avoid duplicates in existing palettes
-    return color;
-  };
+  const generateInitialPalettes = useCallback((): Palette[] => {
+    // Define generateDistinctColor inside generateInitialPalettes
+    const generateDistinctColor = (): string => {
+      let color: string;
+      do {
+        color = chroma.random().hex();
+      } while (palettes.some((palette) => palette.includes(color))); // Avoid duplicates in existing palettes
+      return color;
+    };
 
-  const generateInitialPalettes = (): Palette[] => {
     return Array(10)
       .fill(null)
       .map(() => Array(5).fill(null).map(generateDistinctColor));
-  };
+  }, [palettes]);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient) {
+      setPalettes(generateInitialPalettes());
+    }
+  }, [isClient, generateInitialPalettes]);
 
   // Ensure the palettes are only generated client-side
   useEffect(() => {
     setIsClient(true);
+  }, []);
+
+  useEffect(() => {
     if (isClient) {
       setPalettes(generateInitialPalettes());
     }
