@@ -83,7 +83,7 @@ function ToolsCards({
           </div>
         </div>
       </div>
-      <Paragraph className="text-xl mt-2 text-gray-400">
+      <Paragraph className="text-xl mt-2 text-gray-400 text-justify">
         {description}
       </Paragraph>
     </div>
