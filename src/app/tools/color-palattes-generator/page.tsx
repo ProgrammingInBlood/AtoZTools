@@ -102,7 +102,7 @@ const ColorPaletteGenerator = () => {
         className="bg-green-500 text-white py-2 px-4 rounded mb-6 hover:bg-green-600 mx-auto block mt-5"
         onClick={addRandomPalette}
       >
-        Generate More Palette
+        Generate More Palettes
       </button>
     </div>
   );
