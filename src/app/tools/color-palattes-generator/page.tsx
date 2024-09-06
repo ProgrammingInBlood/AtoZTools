@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import chroma from "chroma-js";
 import { motion, AnimatePresence } from "framer-motion";
+import { generateInitialPalettes } from "@/utils/colorPalatte";
 
 type Palette = string[];
 
@@ -11,42 +12,13 @@ const ColorPaletteGenerator = () => {
   const [copiedColor, setCopiedColor] = useState<string | null>(null);
   const [isClient, setIsClient] = useState<boolean>(false);
 
-  // Generate initial palettes
-  const generateInitialPalettes = useCallback((): Palette[] => {
-    // Define generateDistinctColor inside generateInitialPalettes
-    const generateDistinctColor = (): string => {
-      let color: string;
-      do {
-        color = chroma.random().hex();
-      } while (palettes.some((palette) => palette.includes(color))); // Avoid duplicates in existing palettes
-      return color;
-    };
-
-    return Array(10)
-      .fill(null)
-      .map(() => Array(5).fill(null).map(generateDistinctColor));
-  }, [palettes]);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (isClient) {
-      setPalettes(generateInitialPalettes());
-    }
-  }, [isClient, generateInitialPalettes]);
-
   // Ensure the palettes are only generated client-side
   useEffect(() => {
     setIsClient(true);
-  }, []);
-
-  useEffect(() => {
     if (isClient) {
-      setPalettes(generateInitialPalettes());
+      setPalettes(generateInitialPalettes([]));
     }
-  }, [isClient, generateInitialPalettes]);
+  }, [isClient]);
 
   // Framer Motion animation variants for palette items
   const paletteVariants = {
@@ -55,11 +27,10 @@ const ColorPaletteGenerator = () => {
   };
 
   const addRandomPalette = () => {
-    const newPalette = chroma
-      .scale([chroma.random(), chroma.random()])
-      .mode("lab")
-      .colors(5);
-    setPalettes((prevPalettes) => [...prevPalettes, newPalette]);
+    setPalettes((prevPalettes) => [
+      ...prevPalettes,
+      ...generateInitialPalettes(palettes),
+    ]);
   };
 
   const copyToClipboard = (color: string) => {
@@ -131,7 +102,7 @@ const ColorPaletteGenerator = () => {
         className="bg-green-500 text-white py-2 px-4 rounded mb-6 hover:bg-green-600 mx-auto block mt-5"
         onClick={addRandomPalette}
       >
-        Add Random Palette
+        Generate More Palette
       </button>
     </div>
   );
