@@ -17,7 +17,7 @@ function Header() {
   };
 
   return (
-    <header className="flex flex-wrap items-center justify-between w-full p-5 backdrop-blur sticky top-0 z-10 max-w-screen-xl mx-auto">
+    <header className="flex flex-wrap items-center justify-between w-full p-5 backdrop-blur sticky top-0 z-50 max-w-screen-xl mx-auto">
       <div
         className="text-xl font-semibold cursor-pointer"
         onClick={() => router.push("/")}

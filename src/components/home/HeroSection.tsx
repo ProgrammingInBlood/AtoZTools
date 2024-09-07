@@ -16,7 +16,7 @@ function HeroSection() {
         color={"#fff"}
         refresh
       />
-      <div className="flex flex-col-reverse items-center justify-end md:justify-between gap-12 md:flex-row md:min-h-[calc(100vh-76px)]">
+      <div className="flex flex-col-reverse items-center justify-center md:justify-between gap-12 md:flex-row min-h-[calc(100vh-76px)] -mt-10 sm:mt-0">
         <div className=" md:w-1/2 w-full">
           <Headline>
             Your go-to <UnderlineText>toolkit</UnderlineText> for everyday

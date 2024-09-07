@@ -10,8 +10,11 @@ import UnderlineText from "../shared/UnderlineText";
 
 function HowItWorks() {
   return (
-    <div className="mt-60 mb-32">
-      <SparklesText text="How AtoZTools Works" className=" text-center" />
+    <div>
+      <SparklesText
+        text="How AtoZTools Works"
+        className=" text-center text-3xl sm:text-4xl md:text-6xl"
+      />
       <Paragraph className=" text-center">
         Simplified steps to use each tool.
       </Paragraph>

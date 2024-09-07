@@ -14,7 +14,7 @@ import Paragraph from "../shared/Paragraph";
 function ExploreToolsSection() {
   const router = useRouter();
   return (
-    <div className="pt-16 ">
+    <div>
       <div className="mb-10">
         <Headline>
           All the <UnderlineText>Tools</UnderlineText> You Need in One Place

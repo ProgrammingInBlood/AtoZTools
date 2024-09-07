@@ -7,6 +7,7 @@ import HeroSection from "@/components/home/HeroSection";
 import HowItWorks from "@/components/home/HowItWorks";
 import { WhatPeopleSay } from "@/components/home/WhatPeopleSay";
 import Container from "@/components/shared/Container";
+import Section from "@/components/shared/Section";
 
 export default function Home() {
   return (
@@ -18,13 +19,19 @@ export default function Home() {
         </Container>
         {/* <AboutSection /> */}
         <Container>
-          <ExploreToolsSection />
-
-          <HowItWorks />
+          <Section>
+            <ExploreToolsSection />
+          </Section>
         </Container>
-        <div className="mt-20">
+        <Container>
+          <Section>
+            <HowItWorks />
+          </Section>
+        </Container>
+
+        <Section>
           <WhatPeopleSay />
-        </div>
+        </Section>
       </main>
     </>
   );
