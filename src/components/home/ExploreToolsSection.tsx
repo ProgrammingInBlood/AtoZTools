@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import ColorIcon from "../icons/ColorIcon";
 import ColorPalatteIcon from "../icons/ColorPalatteIcon";
 import Headline from "../shared/Heading";
+import Paragraph from "../shared/Paragraph";
 
 function ExploreToolsSection() {
   const router = useRouter();
@@ -16,10 +17,13 @@ function ExploreToolsSection() {
     <div className="pt-16 ">
       <div className="mb-10">
         <Headline>
-          Our <UnderlineText>Tools</UnderlineText>
+          All the <UnderlineText>Tools</UnderlineText> You Need in One Place
         </Headline>
+        <Paragraph>
+          A wide range of utilities designed to make your life easier.
+        </Paragraph>
       </div>
-      <div className="flex flex-wrap justify-between gap-6">
+      <div className="flex flex-wrap justify-between gap-6 flex-grow">
         <ToolsCards
           title="QR Code Genrator"
           description="A QR code generator creates scannable codes that store data like URLs or contact info, making it easy to share information quickly."

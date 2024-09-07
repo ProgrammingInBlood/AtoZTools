@@ -3,6 +3,8 @@ import QrCodeIcon from "../icons/QrCodeIcon";
 import Headline from "../shared/Heading";
 import Paragraph from "../shared/Paragraph";
 import SubHeading from "../shared/SubHeading";
+import { MagicCard } from "../magicui/magic-card";
+import ShimmerButton from "../magicui/shimmer-button";
 
 interface ToolsCardsProps {
   title: string;
@@ -69,17 +71,26 @@ function ToolsCards({
   return (
     <div className="lg:w-[48%]">
       <div className="flex items-start gap-5 lg:gap-10">
-        <div className={`${classes.background} p-2 rounded w-fit`}>{icon}</div>
+        <MagicCard
+          className="flex  justify-center shadow-2xl p-5 w-fit"
+          gradientColor={"#262626"}
+        >
+          {icon}
+        </MagicCard>
+
+        {/* <div className={`p-2 rounded w-fit bg-gray-950/[.01]`}>{icon}</div> */}
         <div>
           <SubHeading>{title}</SubHeading>
           <div>
-            <button
+            <ShimmerButton
               type="button"
               onClick={onClick}
-              className={`${classes.background} ${classes.hover} text-white font-bold py-2 px-4 rounded-lg mt-1`}
+              className="bg-white border-neutral-700"
             >
-              Try Now
-            </button>
+              <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
+                Try Now
+              </span>
+            </ShimmerButton>
           </div>
         </div>
       </div>
