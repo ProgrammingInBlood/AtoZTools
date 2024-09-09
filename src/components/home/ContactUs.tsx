@@ -12,7 +12,6 @@ import { MailIcon } from "lucide-react";
 import UnderlineText from "../shared/UnderlineText";
 import Headline from "../shared/Heading";
 import Paragraph from "../shared/Paragraph";
-import FlickeringGrid from "../magicui/flickering-grid";
 import ShineBorder from "../magicui/shine-border";
 
 export default function ContactUsSection() {
