@@ -26,8 +26,8 @@ export default function ContactUsSection() {
               <UnderlineText>Touch</UnderlineText>
             </Headline>
             <Paragraph className="max-w-[600px]">
-              We're here to help and answer any question you might have. We look
-              forward to hearing from you!
+              We&apos;re here to help and answer any question you might have. We
+              look forward to hearing from you!
             </Paragraph>
           </div>
         </div>
