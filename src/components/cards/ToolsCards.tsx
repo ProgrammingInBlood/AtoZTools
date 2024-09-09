@@ -1,6 +1,4 @@
 import React, { ReactNode } from "react";
-import QrCodeIcon from "../icons/QrCodeIcon";
-import Headline from "../shared/Heading";
 import Paragraph from "../shared/Paragraph";
 import SubHeading from "../shared/SubHeading";
 import { MagicCard } from "../magicui/magic-card";
