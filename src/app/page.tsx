@@ -1,8 +1,11 @@
 "use client";
 
+import Footer from "@/components/footers";
 import Header from "@/components/headers";
 import { AboutSection } from "@/components/home/About";
+import ContactUsSection from "@/components/home/ContactUs";
 import ExploreToolsSection from "@/components/home/ExploreToolsSection";
+import { GetStartedSection } from "@/components/home/GetStarted";
 import HeroSection from "@/components/home/HeroSection";
 import HowItWorks from "@/components/home/HowItWorks";
 import { WhatPeopleSay } from "@/components/home/WhatPeopleSay";
@@ -32,7 +35,16 @@ export default function Home() {
         <Section>
           <WhatPeopleSay />
         </Section>
+
+        <Section>
+          <GetStartedSection />
+        </Section>
+
+        <Section>
+          <ContactUsSection />
+        </Section>
       </main>
+      <Footer />
     </>
   );
 }

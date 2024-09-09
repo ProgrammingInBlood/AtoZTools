@@ -1,15 +1,19 @@
 "use client";
 
-import { InputField } from "@/components/shared/InputField";
 import { QRCode } from "react-qrcode-logo";
-import { SelectField } from "@/components/shared/SelectField";
-import { TextArea } from "@/components/shared/TextArea";
-import { ImageUploadField } from "@/components/shared/ImageUploadField";
-import { CheckboxField } from "@/components/shared/CheckboxField";
 import { MutableRefObject, useRef, useState } from "react";
-import Header from "@/components/headers";
-import UnderlineText from "@/components/shared/UnderlineText";
-import Container from "@/components/shared/Container";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Slider } from "@/components/ui/slider";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { ImageUploadField } from "@/components/shared/ImageUploadField";
 
 function QrCodePage() {
   const [state, setState] = useState<{ [key: string]: any }>({});
@@ -26,26 +30,10 @@ function QrCodePage() {
     );
   };
 
-  const buildEyeRadiusInput = (id: string) => {
-    return (
-      <InputField
-        name={id}
-        type="range"
-        handleChange={handleChange}
-        min={0}
-        max={50}
-        hideLabel
-        defaultValue={(state as any)[id]}
-      />
-    );
-  };
-
   return (
     <>
-      <div className="flex flex-col items-center bg-black rounded-lg pt-0  space-y-6">
+      <div className="flex flex-col items-center bg-black rounded-lg p-6 space-y-6">
         {/* QR Code Settings */}
-
-        {/* QR Code Preview & Download */}
         <div className="p-5 rounded-xl bg-neutral-800 mt-8">
           <QRCode
             ref={ref as MutableRefObject<QRCode>}
@@ -55,44 +43,44 @@ function QrCodePage() {
               eyeRadius: [
                 {
                   outer: [
-                    state.eyeradius_0_outer_0,
-                    state.eyeradius_0_outer_1,
-                    state.eyeradius_0_outer_2,
-                    state.eyeradius_0_outer_3,
+                    state.topLeftEyeOuter1,
+                    state.topLeftEyeOuter2,
+                    state.topLeftEyeOuter3,
+                    state.topLeftEyeOuter4,
                   ],
                   inner: [
-                    state.eyeradius_0_inner_0,
-                    state.eyeradius_0_inner_1,
-                    state.eyeradius_0_inner_2,
-                    state.eyeradius_0_inner_3,
+                    state.topLeftEyeInner1,
+                    state.topLeftEyeInner2,
+                    state.topLeftEyeInner3,
+                    state.topLeftEyeInner4,
                   ],
                 },
                 {
                   outer: [
-                    state.eyeradius_1_outer_0,
-                    state.eyeradius_1_outer_1,
-                    state.eyeradius_1_outer_2,
-                    state.eyeradius_1_outer_3,
+                    state.topRightEyeOuter1,
+                    state.topRightEyeOuter2,
+                    state.topRightEyeOuter3,
+                    state.topRightEyeOuter4,
                   ],
                   inner: [
-                    state.eyeradius_1_inner_0,
-                    state.eyeradius_1_inner_1,
-                    state.eyeradius_1_inner_2,
-                    state.eyeradius_1_inner_3,
+                    state.topRightEyeInner1,
+                    state.topRightEyeInner2,
+                    state.topRightEyeInner3,
+                    state.topRightEyeInner4,
                   ],
                 },
                 {
                   outer: [
-                    state.eyeradius_2_outer_0,
-                    state.eyeradius_2_outer_1,
-                    state.eyeradius_2_outer_2,
-                    state.eyeradius_2_outer_3,
+                    state.bottomLeftEyeOuter1,
+                    state.bottomLeftEyeOuter2,
+                    state.bottomLeftEyeOuter3,
+                    state.bottomLeftEyeOuter4,
                   ],
                   inner: [
-                    state.eyeradius_2_inner_0,
-                    state.eyeradius_2_inner_1,
-                    state.eyeradius_2_inner_2,
-                    state.eyeradius_2_inner_3,
+                    state.bottomLeftEyeInner1,
+                    state.bottomLeftEyeInner2,
+                    state.bottomLeftEyeInner3,
+                    state.bottomLeftEyeInner4,
                   ],
                 },
               ],
@@ -121,99 +109,568 @@ function QrCodePage() {
           </button>
         </div>
 
-        <div className="flex flex-wrap justify-center  ">
-          <div className="bg-gray-950 p-6 rounded-lg flex flex-col space-y-4  w-full md:w-1/3">
-            <TextArea name="value" handleChange={handleChange} />
-
-            <InputField
-              name="size"
-              type="range"
-              handleChange={handleChange}
-              min={100}
-              max={500}
-            />
-            <InputField
-              name="quietZone"
-              type="range"
-              handleChange={handleChange}
-              min={20}
-              max={80}
-            />
-            <div className="flex justify-around">
-              <InputField
+        <div className="w-full grid gap-4 md:grid-cols-2 p-4 space-y-6 md:space-y-0">
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="value">Value</Label>
+              <Input
+                id="value"
+                name="value"
+                placeholder="Enter value"
+                value={state.value || ""}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="ecLevel">EC Level</Label>
+              <Select
+                name="ecLevel"
+                onValueChange={(value) =>
+                  handleChange({ target: { name: "ecLevel", value } })
+                }
+              >
+                <SelectTrigger id="ecLevel" aria-label="EC Level">
+                  <SelectValue placeholder="L" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="L">L</SelectItem>
+                  <SelectItem value="M">M</SelectItem>
+                  <SelectItem value="Q">Q</SelectItem>
+                  <SelectItem value="H">H</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Checkbox
+                id="enableCORS"
+                name="enableCORS"
+                checked={state.enableCORS || false}
+                onCheckedChange={(value) =>
+                  handleChange({ target: { name: "enableCORS", value } })
+                }
+              />
+              <Label htmlFor="enableCORS">Enable CORS</Label>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="size">Size</Label>
+              <Slider
+                id="size"
+                defaultValue={[state.size || 200]}
+                max={500}
+                min={200}
+                step={1}
+                onValueChange={(value) =>
+                  setState((prevState) => ({ ...prevState, size: value[0] }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="quietZone">Quiet Zone</Label>
+              <Slider
+                id="quietZone"
+                defaultValue={[state.quietZone || 50]}
+                max={100}
+                step={1}
+                onValueChange={(value) =>
+                  setState((prevState) => ({
+                    ...prevState,
+                    quietZone: value[0],
+                  }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="bgColor">Background Color</Label>
+              <Input
+                id="bgColor"
                 name="bgColor"
                 type="color"
-                defaultValue="#ffffff"
-                handleChange={handleChange}
+                value={state.bgColor || "#ffffff"}
+                onChange={handleChange}
               />
-              <InputField
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="fgColor">Foreground Color</Label>
+              <Input
+                id="fgColor"
                 name="fgColor"
                 type="color"
-                defaultValue="#000000"
-                handleChange={handleChange}
+                value={state.fgColor || "#000000"}
+                onChange={handleChange}
               />
             </div>
           </div>
-
-          <div className="bg-gray-950 p-6 rounded-lg flex flex-col space-y-4  w-full  md:w-1/3">
-            <ImageUploadField name="logoImage" handleChange={handleChange} />
-            <InputField
-              name="logoWidth"
-              type="range"
-              handleChange={handleChange}
-              min={20}
-              max={500}
-            />
-            <InputField
-              name="logoHeight"
-              type="range"
-              handleChange={handleChange}
-              min={20}
-              max={500}
-            />
-            <InputField
-              name="logoOpacity"
-              type="range"
-              handleChange={handleChange}
-              min={0}
-              max={1}
-              step={0.1}
-              defaultValue={1}
-            />
-            <InputField
-              name="logoPadding"
-              type="range"
-              handleChange={handleChange}
-              min={0}
-              max={20}
-              step={1}
-              defaultValue={0}
-            />
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <ImageUploadField name="logoImage" handleChange={handleChange} />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="logoWidth">Logo Width</Label>
+              <Slider
+                id="logoWidth"
+                defaultValue={[state.logoWidth || 50]}
+                max={100}
+                step={1}
+                onValueChange={(value) =>
+                  setState((prevState) => ({
+                    ...prevState,
+                    logoWidth: value[0],
+                  }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="logoHeight">Logo Height</Label>
+              <Slider
+                id="logoHeight"
+                defaultValue={[state.logoHeight || 50]}
+                max={100}
+                step={1}
+                onValueChange={(value) =>
+                  setState((prevState) => ({
+                    ...prevState,
+                    logoHeight: value[0],
+                  }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="logoOpacity">Logo Opacity</Label>
+              <Slider
+                id="logoOpacity"
+                defaultValue={[state.logoOpacity || 50]}
+                max={100}
+                step={1}
+                onValueChange={(value) =>
+                  setState((prevState) => ({
+                    ...prevState,
+                    logoOpacity: value[0],
+                  }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="qrStyle">Pattern</Label>
+              <Select
+                name="qrStyle"
+                onValueChange={(value) =>
+                  handleChange({ target: { name: "qrStyle", value } })
+                }
+              >
+                <SelectTrigger id="qrStyle" aria-label="qrStyle">
+                  <SelectValue placeholder="Squares" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="squares">Squares</SelectItem>
+                  <SelectItem value="dots">Dots</SelectItem>
+                  <SelectItem value="fluid">Fluid</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="logoPadding">Logo Padding</Label>
+              <Slider
+                id="logoPadding"
+                defaultValue={[state.logoPadding || 0]}
+                max={20}
+                step={1}
+                onValueChange={(value) =>
+                  setState((prevState) => ({
+                    ...prevState,
+                    logoPadding: value[0],
+                  }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="logoPaddingStyle">Logo Padding Shape</Label>
+              <Select
+                name="logoPaddingStyle"
+                onValueChange={(value) =>
+                  handleChange({ target: { name: "logoPaddingStyle", value } })
+                }
+              >
+                <SelectTrigger id="logoPaddingStyle" aria-label="Eye Shape">
+                  <SelectValue placeholder="Square" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="square">Square</SelectItem>
+                  <SelectItem value="circle">Circle</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
+        </div>
 
-          <div className="bg-gray-950 p-6 rounded-lg flex flex-col space-y-4  w-full  md:w-1/3">
-            <SelectField
-              name="qrStyle"
-              options={["squares", "dots", "fluid"]}
-              handleChange={handleChange}
-            />
-
-            <SelectField
-              name="ecLevel"
-              options={["L", "M", "Q", "H"]}
-              handleChange={handleChange}
-            />
-
-            <SelectField
-              name="logoPaddingStyle"
-              options={["square", "circle"]}
-              handleChange={handleChange}
-            />
-            <CheckboxField
-              name="removeQrCodeBehindLogo"
-              handleChange={handleChange}
-            />
-            <CheckboxField name="enableCORS" handleChange={handleChange} />
+        <div className="space-y-4 px-4 md:px-0 w-full">
+          <Label className="text-xl">Eye Radius</Label>
+          <div className="grid gap-4 md:grid-cols-3">
+            {/* Top Left Eye */}
+            <div className="space-y-4">
+              <Label className="font-bold">Top Left Eye</Label>
+              <div className="space-y-4">
+                <Label>Outer</Label>
+                <Slider
+                  name="eyeradius_0_outer_0"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_0_outer_0",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_0_outer_1"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_0_outer_1",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_0_outer_2"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_0_outer_2",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_0_outer_3"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_0_outer_3",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+              </div>
+              <div className="space-y-4">
+                <Label>Inner</Label>
+                <Slider
+                  name="eyeradius_0_inner_0"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_0_inner_0",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_0_inner_1"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_0_inner_1",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_0_inner_2"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_0_inner_2",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_0_inner_3"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_0_inner_3",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+              </div>
+            </div>
+            {/* Top Right Eye */}
+            <div className="space-y-4">
+              <Label className="font-bold">Top Right Eye</Label>
+              <div className="space-y-4">
+                <Label>Outer</Label>
+                <Slider
+                  name="eyeradius_1_outer_0"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_1_outer_0",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_1_outer_1"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_1_outer_1",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_1_outer_2"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_1_outer_2",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_1_outer_3"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_1_outer_3",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+              </div>
+              <div className="space-y-4">
+                <Label>Inner</Label>
+                <Slider
+                  name="eyeradius_1_inner_0"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_1_inner_0",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_1_inner_1"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_1_inner_1",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_1_inner_2"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_1_inner_2",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_1_inner_3"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_1_inner_3",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+              </div>
+            </div>
+            {/* Bottom Left Eye */}
+            <div className="space-y-4">
+              <Label className="font-bold">Bottom Left Eye</Label>
+              <div className="space-y-4">
+                <Label>Outer</Label>
+                <Slider
+                  name="eyeradius_2_outer_0"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_2_outer_0",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_2_outer_1"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_2_outer_1",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_2_outer_2"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_2_outer_2",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_2_outer_3"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_2_outer_3",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+              </div>
+              <div className="space-y-4">
+                <Label>Inner</Label>
+                <Slider
+                  name="eyeradius_2_inner_0"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_2_inner_0",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_2_inner_1"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_2_inner_1",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_2_inner_2"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_2_inner_2",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+                <Slider
+                  name="eyeradius_2_inner_3"
+                  min={0}
+                  max={100}
+                  defaultValue={[50]}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: {
+                        name: "eyeradius_2_inner_3",
+                        value: value[0],
+                      },
+                    })
+                  }
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

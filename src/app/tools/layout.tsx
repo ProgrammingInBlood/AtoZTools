@@ -3,6 +3,7 @@
 import Header from "@/components/headers";
 import Container from "@/components/shared/Container";
 import UnderlineText from "@/components/shared/UnderlineText";
+import { Toaster } from "@/components/ui/toaster";
 import { usePathname } from "next/navigation";
 import React, { useMemo } from "react";
 
@@ -36,6 +37,7 @@ export default function ToolsLayout({
           </h1>
         </div>
         {children}
+        <Toaster />
       </Container>
     </>
   );
