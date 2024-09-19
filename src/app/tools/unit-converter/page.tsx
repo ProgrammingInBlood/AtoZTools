@@ -177,9 +177,7 @@ export default function UnitConverter() {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold">Unit Converter</h1>
-
+    <div className="flex flex-col gap-5">
       {/* Unit Type Selector */}
       <Select
         value={unitType}

@@ -5,7 +5,8 @@ import Container from "@/components/shared/Container";
 import UnderlineText from "@/components/shared/UnderlineText";
 import { Toaster } from "@/components/ui/toaster";
 import tools from "@/constants/tools";
-import { usePathname } from "next/navigation";
+import { ArrowRight, ChevronRight } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useMemo } from "react";
 
 export default function ToolsLayout({
@@ -13,6 +14,7 @@ export default function ToolsLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const router = useRouter();
   const pathname = usePathname();
 
   const { underlineText, title } = useMemo(() => {
@@ -34,8 +36,22 @@ export default function ToolsLayout({
       <Header />
       <Container>
         <div className="mb-10 mt-5">
-          <h1 className="text-2xl md:text-6xl">
-            <UnderlineText>{underlineText}</UnderlineText> {title}
+          <h1 className="text-md md:text-2xl flex items-center gap-1">
+            {pathname !== "/tools" && (
+              <>
+                <span
+                  onClick={() => router.push("/tools")}
+                  className=" cursor-pointer"
+                >
+                  <UnderlineText>All</UnderlineText>Tools
+                </span>
+                <ChevronRight className="mb-1 md:mb-2" />
+              </>
+            )}
+            <span>
+              <UnderlineText>{underlineText}</UnderlineText>
+              {title}
+            </span>
           </h1>
         </div>
         {children}

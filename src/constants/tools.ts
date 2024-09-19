@@ -1,4 +1,6 @@
 import {
+  CodeIcon,
+  GlobeIcon,
   ImageIcon,
   LockKeyholeIcon,
   PaintBucketIcon,
@@ -55,6 +57,22 @@ const tools = [
     icon: ImageIcon,
     desciption:
       "An Image Compressor tool helps users reduce the size of their image files while maintaining quality, making it ideal for faster uploads and optimized storage.",
+  },
+  {
+    name: "JSON Formatter/Validator",
+    formattedName: { underlineText: "JSON", title: "Formatter/Validator" },
+    path: "/tools/json-formatter-validator",
+    icon: CodeIcon,
+    desciption:
+      "A JSON Formatter and Validator tool helps users format and validate their JSON data, ensuring it follows the correct structure and syntax.",
+  },
+  {
+    name: "IP Address Lookup",
+    formattedName: { underlineText: "IP Address", title: "Lookup" },
+    path: "/tools/ip-address-lookup",
+    icon: GlobeIcon,
+    desciption:
+      "An IP Address Lookup tool provides detailed information about an IP address, including geolocation data and network information.",
   },
 ];
 
