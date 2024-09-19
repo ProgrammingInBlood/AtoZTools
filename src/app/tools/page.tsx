@@ -36,6 +36,7 @@ function ToolsPage() {
       <div className="mt-10">
         {tools.map((tool) => (
           <ToolsCards
+            key={tool.name}
             title={tool.name}
             description={tool.desciption}
             icon={<tool.icon width={30} height={30} />}
