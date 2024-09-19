@@ -1,4 +1,5 @@
 import {
+  ImageIcon,
   LockKeyholeIcon,
   PaintBucketIcon,
   QrCodeIcon,
@@ -46,6 +47,14 @@ const tools = [
     icon: RefreshCcwDotIcon,
     desciption:
       "This Unit Converter tool allows users to effortlessly convert between various units of measurement, including length, weight, temperature, volume, and speed. ",
+  },
+  {
+    name: "Image Compressor",
+    formattedName: { underlineText: "Image", title: "Compressor" },
+    path: "/tools/image-compressor",
+    icon: ImageIcon,
+    desciption:
+      "An Image Compressor tool helps users reduce the size of their image files while maintaining quality, making it ideal for faster uploads and optimized storage.",
   },
 ];
 

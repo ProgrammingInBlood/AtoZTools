@@ -33,7 +33,7 @@ function ToolsPage() {
         <Button type="submit">Search</Button>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-10 flex flex-wrap justify-between gap-6 flex-grow">
         {tools.map((tool) => (
           <ToolsCards
             key={tool.name}
@@ -41,7 +41,6 @@ function ToolsPage() {
             description={tool.desciption}
             icon={<tool.icon width={30} height={30} />}
             onClick={() => router.push(tool.path)}
-            full
           />
         ))}
       </div>
