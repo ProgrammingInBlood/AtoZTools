@@ -29,7 +29,6 @@ function ExploreToolsSection() {
           description="A QR code generator creates scannable codes that store data like URLs or contact info, making it easy to share information quickly."
           icon={<QrCodeIcon fill="#fff" width={30} height={30} />}
           onClick={() => router.push("/tools/qr-code-generator")}
-          color="red"
         />
 
         <ToolsCards
@@ -37,7 +36,6 @@ function ExploreToolsSection() {
           description="A password generator creates strong, random passwords to enhance security for online accounts and sensitive data."
           icon={<PasswordIcon fill="#fff" width={30} height={30} />}
           onClick={() => router.push("/tools/password-generator")}
-          color="yellow"
         />
 
         <ToolsCards
@@ -45,15 +43,13 @@ function ExploreToolsSection() {
           description="A Color Code Generator allows users to create and customize color codes in various formats like HEX, RGB, and HSL."
           icon={<ColorIcon fill="#fff" width={30} height={30} />}
           onClick={() => router.push("/tools/color-code-generator")}
-          color="blue"
         />
 
         <ToolsCards
           title="Color Palatte Genrator"
           description="Generate unique and vibrant color palettes instantly for your design needs. Quickly explore and copy distinct color schemes with ease."
           icon={<ColorPalatteIcon fill="#fff" width={30} height={30} />}
-          onClick={() => router.push("/tools/color-palattes-generator")}
-          color="orange"
+          onClick={() => router.push("/tools/color-palatte-generator")}
         />
       </div>
     </div>

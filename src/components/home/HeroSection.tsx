@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import UnderlineText from "../shared/UnderlineText";
 import PrimaryButton from "../shared/PrimaryButton";
@@ -5,8 +7,10 @@ import { HeroIcon } from "../icons/animated/HeroIcon";
 import Headline from "../shared/Heading";
 import Paragraph from "../shared/Paragraph";
 import Particles from "../magicui/particles";
+import { useRouter } from "next/navigation";
 
 function HeroSection() {
+  const router = useRouter();
   return (
     <div>
       <Particles
@@ -28,7 +32,7 @@ function HeroSection() {
             you need to get things done faster.
           </Paragraph>
 
-          <div className="pt-10">
+          <div className="mt-10" onClick={() => router.push("/tools")}>
             <PrimaryButton text="Expore Tools" />
           </div>
         </div>

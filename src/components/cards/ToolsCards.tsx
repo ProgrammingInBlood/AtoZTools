@@ -3,71 +3,25 @@ import Paragraph from "../shared/Paragraph";
 import SubHeading from "../shared/SubHeading";
 import { MagicCard } from "../magicui/magic-card";
 import ShimmerButton from "../magicui/shimmer-button";
+import { cn } from "@/lib/utils";
 
 interface ToolsCardsProps {
   title: string;
   description: string;
   onClick: () => void;
-  color?: keyof typeof colorClasses;
   icon: ReactNode;
+  full?: boolean;
 }
-
-// Define a mapping from color names to Tailwind classes
-const colorClasses = {
-  green: {
-    background: "bg-green-400",
-    hover: "hover:bg-green-500",
-  },
-  blue: {
-    background: "bg-blue-400",
-    hover: "hover:bg-blue-500",
-  },
-  red: {
-    background: "bg-red-400",
-    hover: "hover:bg-red-500",
-  },
-  yellow: {
-    background: "bg-yellow-400",
-    hover: "hover:bg-yellow-500",
-  },
-  purple: {
-    background: "bg-purple-400",
-    hover: "hover:bg-purple-500",
-  },
-  pink: {
-    background: "bg-pink-400",
-    hover: "hover:bg-pink-500",
-  },
-  orange: {
-    background: "bg-orange-400",
-    hover: "hover:bg-orange-500",
-  },
-  teal: {
-    background: "bg-teal-400",
-    hover: "hover:bg-teal-500",
-  },
-  indigo: {
-    background: "bg-indigo-400",
-    hover: "hover:bg-indigo-500",
-  },
-  gray: {
-    background: "bg-gray-400",
-    hover: "hover:bg-gray-500",
-  },
-  // Add more colors as needed
-};
 
 function ToolsCards({
   title,
   description,
   onClick,
-  color = "green",
   icon,
+  full,
 }: ToolsCardsProps) {
-  const classes = colorClasses[color] || colorClasses.green;
-
   return (
-    <div className="lg:w-[48%]">
+    <div className={cn(!full && "lg:w-[48%]")}>
       <div className="flex items-start gap-4">
         <MagicCard
           className="flex  justify-center shadow-2xl p-5 w-fit"
