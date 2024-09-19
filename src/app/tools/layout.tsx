@@ -5,7 +5,7 @@ import Container from "@/components/shared/Container";
 import UnderlineText from "@/components/shared/UnderlineText";
 import { Toaster } from "@/components/ui/toaster";
 import tools from "@/constants/tools";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useMemo } from "react";
 

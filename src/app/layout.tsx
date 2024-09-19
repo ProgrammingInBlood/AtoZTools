@@ -8,7 +8,6 @@ const Anek = Anek_Devanagari({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "AtoZTools",
   description: "All tools you need at one place.",
-  viewport: "width=device-width, initial-scale=1.0, user-scalable=no",
 };
 
 export default function RootLayout({
