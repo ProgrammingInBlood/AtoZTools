@@ -1,62 +1,51 @@
-"use client";
-
-import Header from "@/components/headers";
-import Container from "@/components/shared/Container";
-import UnderlineText from "@/components/shared/UnderlineText";
-import { Toaster } from "@/components/ui/toaster";
+import ToolsLayout from "@/components/layouts/ToolsLayout";
 import tools from "@/constants/tools";
-import { ChevronRight } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
-import React, { useMemo } from "react";
+import { headers } from "next/headers";
 
-export default function ToolsLayout({
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string[] };
+}) {
+  const pathname = new URL(headers().get("x-request-url") || "").pathname;
+
+  const currentTool = tools.find((tool) => tool.path === pathname);
+
+  console.log({ pathname });
+
+  if (currentTool) {
+    return {
+      title: `${currentTool.name} | AtoZ Tools`,
+      description: currentTool.desciption,
+      openGraph: {
+        title:
+          currentTool.formattedName.underlineText +
+          " " +
+          currentTool.formattedName.title,
+        description: currentTool.desciption,
+        url: `https://atoztools.vercel.app${pathname}`,
+        type: "website",
+      },
+      // You can add other meta tags like Twitter card, images, etc., here
+    };
+  }
+
+  return {
+    title: "Tools | AtoZ Tools",
+    description: "Explore all the tools available on AtoZ Tools.",
+    openGraph: {
+      title: "All Tools",
+      description: "Explore all the tools available on AtoZ Tools.",
+      url: "https://yourwebsite.com/tools",
+      type: "website",
+    },
+  };
+}
+
+export default function AllToolsLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const { underlineText, title } = useMemo(() => {
-    const currentTool = tools.find((tool) => tool.path === pathname);
-
-    if (currentTool) {
-      return currentTool.formattedName;
-    } else {
-      if (pathname === "/tools") {
-        return { underlineText: "All", title: "Tools" };
-      } else {
-        return { underlineText: "", title: "" };
-      }
-    }
-  }, [pathname]);
-
-  return (
-    <>
-      <Header />
-      <Container>
-        <div className="mb-10 mt-5">
-          <h1 className="text-md md:text-2xl flex items-center gap-1">
-            {pathname !== "/tools" && (
-              <>
-                <span
-                  onClick={() => router.push("/tools")}
-                  className=" cursor-pointer"
-                >
-                  <UnderlineText>All</UnderlineText>Tools
-                </span>
-                <ChevronRight className="mb-1 md:mb-2" />
-              </>
-            )}
-            <span>
-              <UnderlineText>{underlineText}</UnderlineText>
-              {title}
-            </span>
-          </h1>
-        </div>
-        {children}
-        <Toaster />
-      </Container>
-    </>
-  );
+  return <ToolsLayout>{children}</ToolsLayout>;
 }
