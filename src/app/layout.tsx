@@ -6,8 +6,15 @@ import "./globals.css";
 const Anek = Anek_Devanagari({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AtoZTools",
+  metadataBase: new URL("https://atoztools.vercel.app"),
+  title: "AtoZ Tools",
   description: "All tools you need at one place.",
+  openGraph: {
+    title: "AtoZ Tools",
+    description: "All tools you need at one place.",
+    url: `https://atoztools.vercel.app`,
+    type: "website",
+  },
 };
 
 export default function RootLayout({

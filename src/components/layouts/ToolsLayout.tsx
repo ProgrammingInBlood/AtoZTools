@@ -35,7 +35,7 @@ export default function ToolsLayout({
     <>
       <Header />
       <Container>
-        <div className="mb-10 mt-5">
+        <div className="mb-10 ">
           <h1 className="text-md md:text-2xl flex items-center gap-1">
             {pathname !== "/tools" && (
               <>
@@ -46,12 +46,13 @@ export default function ToolsLayout({
                   <UnderlineText>All</UnderlineText>Tools
                 </span>
                 <ChevronRight className="mb-1 md:mb-2" />
+
+                <span>
+                  <UnderlineText>{underlineText}</UnderlineText>
+                  {title}
+                </span>
               </>
             )}
-            <span>
-              <UnderlineText>{underlineText}</UnderlineText>
-              {title}
-            </span>
           </h1>
         </div>
         {children}
