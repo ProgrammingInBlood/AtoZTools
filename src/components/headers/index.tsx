@@ -19,50 +19,17 @@ function Header() {
   };
 
   return (
-    <header className="flex flex-wrap items-center justify-between w-full p-5 backdrop-blur sticky top-0 z-50 max-w-screen-xl mx-auto">
-      <div
-        className="text-xl font-semibold cursor-pointer"
-        onClick={() => router.push("/")}
-      >
-        <UnderlineText>AtoZ</UnderlineText>Tools
-      </div>
-
-      {/* Desktop Menu */}
-      <div className="hidden md:flex justify-center gap-5 text-md font-semibold">
-        {headerPaths.map((route) => {
-          if (route.path === pathname) {
-            return (
-              <ActiveLink key={route.path} href={route.path}>
-                {route.name}
-              </ActiveLink>
-            );
-          } else {
-            return (
-              <Link key={route.path} href={route.path}>
-                {route.name}
-              </Link>
-            );
-          }
-        })}
-      </div>
-
-      <div className="flex items-center gap-4">
-        <GithubIcon
-          width={36}
-          height={36}
-          onClick={() => router.push("https://github.com/ProgrammingInBlood")}
-        />
-        <button
-          className="block md:hidden text-white focus:outline-none"
-          onClick={toggleMenu}
+    <header className="w-full backdrop-blur sticky top-0 z-50">
+      <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between w-full p-5">
+        <div
+          className="text-xl font-semibold cursor-pointer"
+          onClick={() => router.push("/")}
         >
-          {menuOpen ? <CloseIcon /> : <MenuIcon />}
-        </button>
-      </div>
+          <UnderlineText>AtoZ</UnderlineText>Tools
+        </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="flex flex-col items-center w-full mt-4 space-y-3 md:hidden">
+        {/* Desktop Menu */}
+        <div className="hidden md:flex justify-center gap-5 text-md font-semibold">
           {headerPaths.map((route) => {
             if (route.path === pathname) {
               return (
@@ -79,7 +46,42 @@ function Header() {
             }
           })}
         </div>
-      )}
+
+        <div className="flex items-center gap-4">
+          <GithubIcon
+            width={36}
+            height={36}
+            onClick={() => router.push("https://github.com/ProgrammingInBlood")}
+          />
+          <button
+            className="block md:hidden text-white focus:outline-none"
+            onClick={toggleMenu}
+          >
+            {menuOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="flex flex-col items-center w-full mt-4 space-y-3 md:hidden">
+            {headerPaths.map((route) => {
+              if (route.path === pathname) {
+                return (
+                  <ActiveLink key={route.path} href={route.path}>
+                    {route.name}
+                  </ActiveLink>
+                );
+              } else {
+                return (
+                  <Link key={route.path} href={route.path}>
+                    {route.name}
+                  </Link>
+                );
+              }
+            })}
+          </div>
+        )}
+      </div>
     </header>
   );
 }

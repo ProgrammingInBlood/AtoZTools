@@ -7,6 +7,10 @@ const headerPaths = [
     name: "Tools",
     path: "/tools",
   },
+  {
+    name: "Donate",
+    path: "/donate",
+  },
 ];
 
 export default headerPaths;

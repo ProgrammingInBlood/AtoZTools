@@ -16,7 +16,7 @@ import ShineBorder from "../magicui/shine-border";
 
 export default function ContactUsSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-black ">
+    <section className="w-full py-12 md:py-24 lg:py-32  ">
       <div className="container px-4 md:px-6 flex flex-col lg:flex-row">
         {/* LEFT SECTION */}
         <div className="relative mt-12 text-center lg:text-left">
@@ -51,7 +51,7 @@ export default function ContactUsSection() {
         </div>
 
         {/* RIGHT SECTION */}
-        <div className="mx-auto max-w-lg mt-12 relative w-full">
+        <div className="ml-auto max-w-lg mt-12 relative w-full">
           <ShineBorder
             className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl p-0"
             color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}

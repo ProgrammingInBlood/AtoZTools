@@ -2,17 +2,17 @@ import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   return (
-    <footer className=" p-4 md:p-6 w-full bg-black border-t-neutral-800 border-t">
-      <div className="container mx-auto flex items-center justify-between">
+    <footer className="p-2 md:p-6 w-full bg-black border-t-neutral-800 border-t">
+      <div className="mx-auto flex items-center justify-between">
         <p className="text-sm text-muted-foreground">
           Made with love by Eklavya
         </p>
         <div className="flex items-center gap-4">
-          <Button variant="outline" className="px-4 py-2">
+          <Button variant="outline">
             <HeartIcon className="mr-2 h-4 w-4" />
             Donate
           </Button>
-          <Button variant="outline" className="px-4 py-2">
+          <Button variant="outline">
             <ArrowUpIcon className="mr-2 h-4 w-4" />
             Go to Top
           </Button>
