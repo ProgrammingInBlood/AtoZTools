@@ -8,3 +8,5 @@ const headerPaths = [
     path: "/tools",
   },
 ];
+
+export default headerPaths;

@@ -81,7 +81,7 @@ export default function ImageCompressor() {
       if (error.name === "AbortError") {
         console.log("Compression aborted.");
       } else {
-        console.error("Error compressing image:", error);
+        alert("Error compressing image:" + error);
       }
       setIsCompressing(false);
     }

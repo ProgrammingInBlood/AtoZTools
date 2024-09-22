@@ -1,14 +1,16 @@
 "use client";
-
 import React, { useState } from "react";
 import GithubIcon from "../icons/Github";
 import MenuIcon from "../icons/MenuIcon";
 import CloseIcon from "../icons/CloseIcon";
 import UnderlineText from "../shared/UnderlineText";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import headerPaths from "@/constants/header-paths";
 
 function Header() {
   const router = useRouter();
+  const pathname = usePathname();
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -26,19 +28,23 @@ function Header() {
       </div>
 
       {/* Desktop Menu */}
-      <ul className="hidden md:flex justify-center gap-5 text-md font-semibold">
-        <li>
-          <a
-            href="#"
-            className="group text-green-600 transition duration-300 font-bold"
-          >
-            <UnderlineText>Home</UnderlineText>
-            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-green-600"></span>
-          </a>
-        </li>
-        <li>About</li>
-        <li>Contact us</li>
-      </ul>
+      <div className="hidden md:flex justify-center gap-5 text-md font-semibold">
+        {headerPaths.map((route) => {
+          if (route.path === pathname) {
+            return (
+              <ActiveLink key={route.path} href={route.path}>
+                {route.name}
+              </ActiveLink>
+            );
+          } else {
+            return (
+              <Link key={route.path} href={route.path}>
+                {route.name}
+              </Link>
+            );
+          }
+        })}
+      </div>
 
       <div className="flex items-center gap-4">
         <GithubIcon
@@ -56,17 +62,43 @@ function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <ul className="flex flex-col items-center w-full mt-4 space-y-3 md:hidden">
-          <a href="#" className="group text-green-600 transition duration-300">
-            Link
-            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-green-600"></span>
-          </a>
-          <li>About</li>
-          <li>Contact us</li>
-        </ul>
+        <div className="flex flex-col items-center w-full mt-4 space-y-3 md:hidden">
+          {headerPaths.map((route) => {
+            if (route.path === pathname) {
+              return (
+                <ActiveLink key={route.path} href={route.path}>
+                  {route.name}
+                </ActiveLink>
+              );
+            } else {
+              return (
+                <Link key={route.path} href={route.path}>
+                  {route.name}
+                </Link>
+              );
+            }
+          })}
+        </div>
       )}
     </header>
   );
 }
 
 export default Header;
+
+function ActiveLink({
+  children,
+  href,
+}: {
+  children: React.ReactNode;
+  href: string;
+}) {
+  return (
+    <Link
+      className="group text-green-600 transition duration-300 font-bold"
+      href={href}
+    >
+      <UnderlineText>{children}</UnderlineText>
+    </Link>
+  );
+}

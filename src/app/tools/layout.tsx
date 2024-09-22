@@ -11,8 +11,6 @@ export async function generateMetadata({
 
   const currentTool = tools.find((tool) => tool.path === pathname);
 
-  console.log({ pathname });
-
   if (currentTool) {
     return {
       title: `${currentTool.name} | AtoZ Tools`,

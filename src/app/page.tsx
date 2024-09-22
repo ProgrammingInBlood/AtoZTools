@@ -5,6 +5,7 @@ import Header from "@/components/headers";
 import { AboutSection } from "@/components/home/About";
 import ContactUsSection from "@/components/home/ContactUs";
 import ExploreToolsSection from "@/components/home/ExploreToolsSection";
+import FaqSection from "@/components/home/FaqSection";
 import { GetStartedSection } from "@/components/home/GetStarted";
 import HeroSection from "@/components/home/HeroSection";
 import HowItWorks from "@/components/home/HowItWorks";
@@ -36,12 +37,16 @@ export default function Home() {
           <WhatPeopleSay />
         </Section>
 
-        <Section>
-          <GetStartedSection />
-        </Section>
+        <Container>
+          <FaqSection />
+        </Container>
 
         <Section>
           <ContactUsSection />
+        </Section>
+
+        <Section>
+          <GetStartedSection />
         </Section>
       </main>
       <Footer />

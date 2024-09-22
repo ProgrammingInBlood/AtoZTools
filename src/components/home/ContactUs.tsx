@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { MailIcon } from "lucide-react";
+import { Instagram, Mail, MailIcon, MapPin } from "lucide-react";
 import UnderlineText from "../shared/UnderlineText";
 import Headline from "../shared/Heading";
 import Paragraph from "../shared/Paragraph";
@@ -16,21 +16,42 @@ import ShineBorder from "../magicui/shine-border";
 
 export default function ContactUsSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-black">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center space-y-4 text-center">
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-black ">
+      <div className="container px-4 md:px-6 flex flex-col lg:flex-row">
+        {/* LEFT SECTION */}
+        <div className="relative mt-12 text-center lg:text-left">
           <div className="space-y-2">
             <Headline className="tracking-tighter">
               Get in
               <UnderlineText>Touch</UnderlineText>
             </Headline>
-            <Paragraph className="max-w-[600px]">
+            <Paragraph className="max-w-[500px] mx-auto lg:mx-0">
               We&apos;re here to help and answer any question you might have. We
               look forward to hearing from you!
             </Paragraph>
           </div>
+
+          <div className="space-y-4 mt-8  w-fit mx-auto lg:mx-0">
+            <h2 className="text-xl font-semibold text-left">
+              Contact Information
+            </h2>
+            <div className="flex items-center space-x-2">
+              <Instagram className="h-5 w-5 text-primary" />
+              <span>mr.eklavya</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Mail className="h-5 w-5 text-primary" />
+              <span>eklavyasingh12065@gmail.com</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <MapPin className="h-5 w-5 text-primary" />
+              <span>Hyderabad, India</span>
+            </div>
+          </div>
         </div>
-        <div className="mx-auto max-w-lg mt-12 relative">
+
+        {/* RIGHT SECTION */}
+        <div className="mx-auto max-w-lg mt-12 relative w-full">
           <ShineBorder
             className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl p-0"
             color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
