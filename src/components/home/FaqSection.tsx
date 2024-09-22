@@ -24,7 +24,7 @@ function FaqSection() {
       </div>
       {faqs.map((faq) => {
         return (
-          <Accordion type="single" collapsible>
+          <Accordion type="single" collapsible key={faq.question}>
             <AccordionItem value={faq.question}>
               <AccordionTrigger>{faq.question}</AccordionTrigger>
               <AccordionContent>{faq.answer}</AccordionContent>
